@@ -1,0 +1,5 @@
+#backup
+docker exec CONTAINER sh -c 'exec mysqldump --all-databases -u root -p"$MYSQL_ROOT_PASSWORD"' > /backup.sql
+
+#restore
+cat backup.sql | docker exec -i CONTAINER /usr/bin/mysql -u root --password=root
